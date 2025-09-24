@@ -3,6 +3,11 @@
     box-sizing: border-box;
 }
 
+.light-mode .about-section {
+    background-image: url("../images/bg-light11.png");
+}
+
+
 html,
 body {
     max-width: 100%;
@@ -234,6 +239,8 @@ body {
 /* Tablets & phones */
 /* ===== Center everything on mobile ===== */
 @media (max-width: 768px) {
+
+
     .about-section {
         background: none; // new
         display: grid;
@@ -290,6 +297,11 @@ body {
         transform: translate(-50%, -50%) rotate(60deg);
         transform-origin: center;
     }
+
+    .light-mode .about-section::before {
+        background-image: url("../images/bg-light.png");
+    }
+
 
     .about-section>* {
         position: relative;
