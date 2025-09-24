@@ -1,3 +1,15 @@
+/* --- Global overflow guard (prevents white strip) --- */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    /* fixes horizontal bleed on mobile */
+}
+
 /* ---------- Theme-aware caption colors ---------- */
 :root {
     --cap-bg: rgba(255, 255, 255, 0.78);
@@ -5,6 +17,8 @@
     --cap-text: #111;
     /* dark text on light */
     --cap-border: rgba(0, 0, 0, 0.08);
+    --hero-min-desktop: clamp(720px, 85vh, 1080px);
+    --hero-min-mobile: clamp(640px, 92vh, 960px);
 }
 
 .dark-mode {
@@ -19,60 +33,85 @@
     background-color: rgba(0, 0, 0, 0.2);
 }
 
+.container {
+    width: 100%;
+    margin-inline: auto;
+}
+
+
+/* -------- Hero -------- */
 .about-section {
     position: relative;
-    /* anchor for background caption */
-    display: flex;
-    gap: 30px;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: minmax(120px, 180px) 1fr;
+    gap: clamp(16px, 4vw, 40px);
     align-items: center;
+    /* was ~560–700px; now taller */
+    min-height: var(--hero-min-desktop);
+
     width: 100%;
-    padding: 0px 15%;
-    min-height: 700px;
+    padding-inline: var(--page-gutter);
+    padding-block: clamp(96px, 14vh, 180px); // padding-block: clamp(64px, 12vh, 140px);
+    min-height: var(--hero-min-desktop); // min-height: clamp(520px, 70vh, 780px);
+
     background-image: url("../images/bg-dark.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
 
-    /* Background caption (sits on the hero bg, behind content) */
+    /* Background caption (sits on hero bg, behind content) */
     .bg-caption {
         position: absolute;
         left: 15%;
-        bottom: 52px;
-        /* moved up to make room for subtitle */
+        bottom: 20px;
+        inset-inline-start: clamp(16px, 5vw, 15%);
+        /* responsive left */
+        bottom: clamp(12px, 6vh, 56px);
         z-index: 1;
-        padding: 4px 10px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .08em;
+
+        max-width: min(92vw, 740px);
+        padding: 6px 12px;
+
+        font-size: clamp(10px, 1.2vw, 13px);
+        line-height: 1.35;
+        letter-spacing: .06em;
         text-transform: uppercase;
+        font-weight: 600;
+
         color: var(--cap-text);
         background: var(--cap-bg);
         border: 1px solid var(--cap-border);
         border-radius: 10px;
         backdrop-filter: blur(2px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
+        white-space: normal;
+        /* allow wrapping */
+        overflow-wrap: anywhere;
+        /* avoid overflow */
         user-select: none;
         pointer-events: none;
     }
 
     .bg-subtitle {
         position: absolute;
-        left: 15%;
-        bottom: 16px;
-        /* sits below the badge */
+        inset-inline-start: clamp(16px, 5vw, 15%);
+        bottom: clamp(8px, 3vh, 20px);
         z-index: 1;
-        max-width: 420px;
+
+        max-width: min(90vw, 420px);
         padding: 6px 10px;
-        font-size: 12px;
+        font-size: clamp(10px, 1.1vw, 12px);
         line-height: 1.35;
+
         color: var(--cap-text);
         background: var(--cap-bg);
         border: 1px solid var(--cap-border);
         border-radius: 10px;
         backdrop-filter: blur(2px);
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+
         user-select: none;
         pointer-events: none;
     }
@@ -81,6 +120,8 @@
 .about-section .content {
     text-align: left;
     z-index: 2;
+    min-width: 0;
+    /* enables text wrapping in grid child */
 
     .social_icons {
         display: flex;
@@ -98,25 +139,40 @@
     }
 
     p {
-        font-size: 1.5em;
-        margin-block-start: 0;
-        margin-block-end: 0;
+        font-size: clamp(16px, 2.3vw, 24px);
+        margin-block: 0;
     }
 
-    h1 {
-        font-size: 5em;
-        margin-block-start: 0;
-        margin-block-end: 0;
+    /* Responsive, wrap-friendly title */
+    .title {
+        margin-block: 0 4px;
+        font-size: clamp(28px, 8vw, 88px);
+        line-height: 1.08;
+        text-wrap: balance;
+        /* nicer multi-line headings */
+        overflow-wrap: break-word;
+        /* allow breaks if needed */
+        word-break: normal;
+        /* avoid aggressive breaking */
+        hyphens: auto;
     }
+
+    // h1 {
+    //     font-size: 5em;
+    //     margin-block-start: 0;
+    //     margin-block-end: 0;
+    // }
 }
 
 .about-section .image-wrapper {
     z-index: 2;
 
     img {
-        width: 150px;
+        width: clamp(96px, 14vw, 160px);
+        aspect-ratio: 1 / 1;
         border-radius: 50%;
         display: block;
+        object-fit: cover;
     }
 }
 
@@ -127,112 +183,236 @@
 }
 
 /* --------- Responsive --------- */
-@media screen {
-    @media (max-width: 567px) {
-        .nav-left {
-            padding-top: 20px;
-            float: left;
+
+/* Tablets / small laptops */
+@media (max-width: 1024px) {
+    .about-section {
+        grid-template-columns: minmax(100px, 140px) 1fr;
+    }
+}
+
+/* Phones: ultra-small helpers for the nav you had */
+@media (max-width: 567px) {
+    .nav-left {
+        padding-top: 20px;
+        float: left;
+    }
+
+    .nav-left img {
+        height: 35px;
+    }
+
+    .nav-right {
+        float: right;
+    }
+
+    .nav-right li {
+        padding: 10px 15px;
+        list-style: none;
+        font-size: 13px;
+        color: white;
+        width: 10%;
+    }
+
+    .nav-right ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        width: 100%;
+    }
+
+    .about {
+        padding-left: 5%;
+        padding-right: 5%;
+        font-size: 12px;
+    }
+}
+
+/* Tablets & phones */
+/* ===== Center everything on mobile ===== */
+@media (max-width: 768px) {
+    .about-section {
+        background: none; // new
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-content: center;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+        min-height: var(--hero-min-mobile, 92vh);
+        background-attachment: scroll;
+
+        /* keep caption LEFT (not centered) */
+        .bg-caption {
+            left: 5%;
+            bottom: clamp(10px, 2vh, 24px);
+            max-width: 80%;
+            transform: none;
+            /* <— important change */
+            text-align: left;
+            /* <— important change */
+            white-space: normal;
+            overflow-wrap: anywhere;
         }
 
-        .nav-left img {
-            height: 35px;
-        }
-
-        .nav-right {
-            float: right;
-        }
-
-        .nav-right li {
-            padding: 10px 15px;
-            list-style: none;
-            font-size: 13px;
-            color: white;
-            width: 10%;
-        }
-
-        .nav-right ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            width: 100%;
-        }
-
-        .about {
-            padding-left: 5%;
-            padding-right: 5%;
-            font-size: 12px;
+        .bg-subtitle {
+            left: 5%;
+            bottom: clamp(4px, 1.5vh, 16px);
+            max-width: 80%;
+            transform: none;
+            text-align: left;
         }
     }
 
-    @media (max-width: 768px) {
-        .about-section h1 {
-            font-size: 4em !important;
-            text-align: left;
-        }
+    .about-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        /* keep UI clickable */
+        /* draw the same art as a layer we can transform */
+        background-image: url("../images/bg-dark.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
 
-        .about-section p {
-            text-align: left;
-        }
+        /* rotate and center */
+        left: 50%;
+        top: 50%;
+        width: 100vh;
+        /* swap dimensions when rotating */
+        height: 100vw;
+        transform: translate(-50%, -50%) rotate(60deg);
+        transform-origin: center;
+    }
 
-        .container {
-            display: initial;
-        }
+    .about-section>* {
+        position: relative;
+        z-index: 1;
+    }
 
-        .social_icons {
-            display: none !important;
-        }
 
-        .mobile_social_icons {
-            padding-top: 10px;
-            display: flex !important;
-            flex-direction: row;
-            gap: 10px;
-            color: white;
+    .about-section .image-wrapper {
+        justify-self: center;
+        width: auto;
+        margin-bottom: 10px;
 
-            svg {
-                font-size: 1.8em;
-            }
-        }
-
-        .about-section {
-            padding-top: 150px;
+        img {
+            width: clamp(96px, 28vw, 140px);
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            object-fit: cover;
             display: block;
-            padding-left: 0;
-            padding-right: 0;
-            background-attachment: scroll;
-            /* smoother on mobile */
-            min-height: 560px;
-
-            /* tuck caption slightly in on small screens */
-            .bg-caption {
-                left: 5%;
-                bottom: 60px;
-                font-size: 10px;
-                padding: 3px 8px;
-            }
-
-            .bg-subtitle {
-                left: 5%;
-                bottom: 18px;
-                max-width: 80%;
-                font-size: 11px;
-                padding: 5px 8px;
-            }
         }
+    }
 
-        .about-section .content {
-            width: 90%;
-            padding-left: 5%;
-            padding-right: 5%;
-            padding-bottom: 5%;
-        }
+    .about-section .content {
+        width: 100%;
+        max-width: 680px;
+        padding: 0 6% 5%;
+        display: grid;
+        justify-items: center;
+        gap: 6px;
+    }
 
-        .about-section .image-wrapper {
-            padding-left: 5%;
-            width: 100%;
+    /* center the name */
+    .about-section .title,
+    .about-section h1 {
+        font-size: clamp(28px, 9vw, 40px) !important;
+        line-height: 1.08;
+        margin: 0;
+        text-align: center;
+        text-wrap: balance;
+        overflow-wrap: break-word;
+    }
+
+    .about-section p {
+        font-size: clamp(14px, 4vw, 18px);
+        margin: 0;
+    }
+
+    .social_icons {
+        display: none !important;
+    }
+
+    .mobile_social_icons {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin-top: 8px;
+
+        svg {
+            font-size: 1.8em;
         }
+    }
+}
+
+
+/* Ultra-small phones */
+@media (max-width: 380px) {
+
+    .about-section .title,
+    .about-section h1 {
+        font-size: clamp(24px, 10vw, 34px) !important;
+        line-height: 1.06;
+    }
+}
+
+/* Ultra-small phones */
+// @media (max-width: 380px) {
+//     .about-section .title {
+//         font-size: clamp(24px, 10vw, 36px) !important;
+//         line-height: 1.05;
+//     }
+
+//     .about-section .bg-caption {
+//         font-size: 10px;
+//         padding: 4px 8px;
+//         bottom: 48px;
+//     }
+// }
+
+/* ===== Center avatar + text on wide screens ===== */
+@media (min-width: 1025px) {
+    .about-section {
+        /* keep your background full-width, but make the grid itself hug content */
+        display: grid;
+        grid-template-columns: minmax(120px, 160px) auto;
+        /* avatar | content */
+        justify-content: center;
+        /* <-- centers the two columns as a group */
+        align-items: center;
+        gap: clamp(16px, 4vw, 40px);
+    }
+
+    /* ensure text block doesn’t stretch to full row width */
+    .about-section .content {
+        width: auto;
+        max-width: 52rem;
+        /* tweak if needed */
+        min-width: 0;
+        /* allow wrapping */
+        text-align: left;
+    }
+
+    /* make the title wrap nicely when centered group is narrow */
+    .about-section .title {
+        text-wrap: balance;
+        overflow-wrap: break-word;
+    }
+
+    /* keep the avatar tidy */
+    .about-section .image-wrapper img {
+        width: clamp(120px, 12vw, 160px);
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 50%;
+        display: block;
     }
 }

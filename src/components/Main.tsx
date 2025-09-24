@@ -9,7 +9,10 @@ function Main() {
     <div className="container">
       <div className="about-section">
         {/* Background caption on the hero image */}
-        <span className="bg-caption">▲ This image is a Digital reinpretation of Michelangelo’s Creation of Adam, rendered in ASCII form.<br />Symbolizing innovation and creativity in the digital age.</span>
+        <span className="bg-caption">
+          ▲ This image is a digital reinterpretation of Michelangelo’s “Creation of Adam”, rendered in ASCII.
+          {/* Symbolizing innovation and creativity in the digital age. */}
+        </span>
 
         <div className="image-wrapper">
           <img src={avatar} alt="Avatar" />
@@ -21,9 +24,7 @@ function Main() {
             <a href="https://www.linkedin.com/in/sachinjeyakkumaran/" target="_blank" rel="noreferrer"><LinkedInIcon /></a>
           </div>
 
-          <h1 style={{ whiteSpace: "nowrap", textWrap: "nowrap", wordBreak: "keep-all", lineHeight: 1.08, fontSize: "clamp(28px, 8vw, 88px)" }}>
-            Sachin Jeyakkumaran
-          </h1>
+          <h1 className="title">Sachin Saailesh Jeyakkumaran</h1>
           <p>AI / ML Engineer</p>
 
           <div className="mobile_social_icons">
@@ -32,7 +33,7 @@ function Main() {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
