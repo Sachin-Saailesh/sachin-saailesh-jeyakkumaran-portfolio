@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/sachin-saailesh-jeyakkumaran-portfolio/static/css/main.91b696e9.css",
+    "main.js": "/sachin-saailesh-jeyakkumaran-portfolio/static/js/main.37dcc455.js",
+    "static/js/453.5d79306b.chunk.js": "/sachin-saailesh-jeyakkumaran-portfolio/static/js/453.5d79306b.chunk.js",
+    "static/media/bg-light.png": "/sachin-saailesh-jeyakkumaran-portfolio/static/media/bg-light.3f4792d0d2106a391b04.png",
+    "static/media/bg-dark.png": "/sachin-saailesh-jeyakkumaran-portfolio/static/media/bg-dark.33552bd8341286d790cf.png",
+    "static/media/photo-icon.jpg": "/sachin-saailesh-jeyakkumaran-portfolio/static/media/photo-icon.3021986ae4d3128ec0b4.jpg",
+    "index.html": "/sachin-saailesh-jeyakkumaran-portfolio/index.html",
+    "main.91b696e9.css.map": "/sachin-saailesh-jeyakkumaran-portfolio/static/css/main.91b696e9.css.map",
+    "main.37dcc455.js.map": "/sachin-saailesh-jeyakkumaran-portfolio/static/js/main.37dcc455.js.map",
+    "453.5d79306b.chunk.js.map": "/sachin-saailesh-jeyakkumaran-portfolio/static/js/453.5d79306b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91b696e9.css",
+    "static/js/main.37dcc455.js"
+  ]
+}
