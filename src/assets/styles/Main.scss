@@ -415,4 +415,10 @@ body {
         border-radius: 50%;
         display: block;
     }
+
+    .about-section .bg-caption {
+        /* was left: 15%; push it inward a bit */
+        left: calc(15% + 8vw);
+        /* tweak 8vw to taste (e.g., 6vw, 10vw) */
+    }
 }
