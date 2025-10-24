@@ -7,119 +7,194 @@ function Project() {
       <h1>Projects</h1>
       <div className="projects-grid">
 
+        {/* ==================== NEW PROJECTS ==================== */}
+
+        <div className="project">
+          <h2>Long-Context Codebase Analysis with Hybrid RAG + LLM Tools</h2>
+          <p>
+            Built a long-context Retrieval-Augmented Generation (RAG) system for million-token codebases by combining
+            dense (<b>Qdrant</b>) and lexical (<b>BM25</b>) retrieval with <b>Cohere Rerank</b> for hybrid context fusion.
+            Implemented <b>AST-based chunking</b> for efficient retrieval and reduced redundancy.
+            Integrated <b>GPT-4o-mini</b> with <b>FastAPI</b> and <b>Redis</b> for LLM-driven code summarization and dependency tracing.
+            Added <b>Prometheus</b> monitoring and adaptive caching for stable latency across long-context inference.
+          </p>
+          <p className="tags">
+            #RAG #LLM #Qdrant #BM25 #Cohere #AST #FastAPI #Redis #Prometheus #Caching #CodeAnalysis
+          </p>
+        </div>
+
+        <div className="project">
+          <h2>Distributed Data Pipeline for LinkedIn Job Market Analytics</h2>
+          <p>
+            Engineered a distributed ETL pipeline to process 1.3 M LinkedIn job postings using <b>Apache Hadoop</b> and <b>PySpark</b> on <b>Google Dataproc</b>.
+            Designed scalable ingestion and transformation workflows with <b>HDFS</b>, <b>MapReduce</b>, and <b>Parquet</b> serialization.
+            Built preprocessing and feature engineering modules for ML-ready datasets supporting trend prediction and clustering.
+            Optimized throughput with <b>YARN</b> tuning and batch-level parallelism for 3× faster execution.
+          </p>
+          <p className="tags">
+            #DataEngineering #PySpark #Hadoop #HDFS #ETL #Dataproc #MapReduce #Parquet #YARN #BigData
+          </p>
+        </div>
+
+        <div className="project">
+          <h2>Relational Data Modeling for EV Adoption Analysis</h2>
+          <p>
+            Designed a <b>PostgreSQL</b> database for EV registration data with normalized schema and referential integrity.
+            Implemented <b>ETL pipelines</b> for CSV ingestion with <b>PL/pgSQL</b> procedures and validation triggers.
+            Indexed key attributes to improve query performance by &gt; 50%.
+            Applied <b>EXPLAIN ANALYZE</b> for query optimization and geospatial trend analytics.
+          </p>
+          <p className="tags">
+            #PostgreSQL #SQL #DatabaseDesign #PLpgSQL #ETL #Indexing #QueryOptimization #DataModeling
+          </p>
+        </div>
+
+        {/* ==================== EXISTING PROJECTS ==================== */}
+
         <div className="project">
           <h2>Real-Time Weapon Detection : YOLOv11 vs RT-DETR</h2>
           <p>
-            Benchmarked YOLOv11 (CNN) against RT-DETR (transformer) on CCTV streams with AMP training.
-            RT-DETR achieved mAP50 83.0 / mAP50–95 37.2 / Recall 76.2 vs YOLOv11 77.8 / 34.9 / 73.6,
-            with latency 3.1ms vs 18.7ms. Shipped a Streamlit evaluation toolkit with PR curves and
-            class-wise mAP; exported .pt / ONNX / TorchScript.
+            Benchmarked <b>YOLOv11 (CNN)</b> vs <b>RT-DETR (Transformer)</b> on CCTV streams with AMP training.
+            RT-DETR achieved mAP50 83.0 / mAP50–95 37.2 / Recall 76.2 vs YOLOv11 77.8 / 34.9 / 73.6, latency 3.1 ms vs 18.7 ms.
+            Delivered a <b>Streamlit</b> evaluation toolkit with PR curves and class-wise mAP; exported .pt / ONNX / TorchScript.
+          </p>
+          <p className="tags">
+            #YOLOv11 #RTDETR #ComputerVision #ObjectDetection #Transformer #ONNX #TorchScript #Streamlit
           </p>
         </div>
 
         <div className="project">
-          <h2>Legal Judgment Prediction (LexGLUE - ECtHR Task B)</h2>
+          <h2>Legal Judgment Prediction (LexGLUE – ECtHR Task B)</h2>
           <p>
-            Built a long-document multi-label classifier with Legal-BERT using overlap-chunking and [SEP].
-            Fine-tuned with AMP, AdamW, cosine LR with warmup, gradient accumulation ×4, and focal loss. Achieved F1 0.741
-            (val 0.747) and Micro Accuracy 0.923 (≈ +2.9 F1 over BERT-base). Added attention heatmaps; segmentation and
-            adaptive thresholds were pivotal.
+            Built a long-document multi-label classifier with <b>Legal-BERT</b> using overlap-chunking and [SEP].
+            Fine-tuned with <b>AdamW</b>, cosine LR schedule, gradient accumulation ×4, and focal loss.
+            Achieved F1 0.741 (val 0.747) and Micro Accuracy 0.923 (+2.9 F1 over BERT-base).
+            Added attention heatmaps and adaptive thresholding for interpretability.
+          </p>
+          <p className="tags">
+            #BERT #LegalBERT #NLP #TextClassification #HuggingFace #FocalLoss #Transformer #Explainability
           </p>
         </div>
 
         <div className="project">
-          <h2>CityLearn - Multi-Agent Energy Control</h2>
+          <h2>CityLearn – Multi-Agent Energy Control</h2>
           <p>
-            Designed a forecast-aware controller for 18 buildings across 8,760 steps with a 173-D state and 6-step GRU forecasts,
-            optimizing a unified cost, CO₂, peak, and comfort objective. Benchmarked DQN, PPO, and SAC; tuned DQN reached district reward
-            −13,580 (~90% over RBC) with +15.5% uplift from forecasts; validated over 10 seeds with paired t-test α = 0.05.
+            Designed a forecast-aware controller for 18 buildings over 8,760 steps using <b>GRU</b> forecasts.
+            Optimized a multi-objective cost combining CO₂, peak load, and comfort.
+            Benchmarked <b>DQN</b>, <b>PPO</b>, and <b>SAC</b>; best model achieved −13,580 reward (~90 % over RBC) with +15.5 % uplift from forecasts.
+          </p>
+          <p className="tags">
+            #ReinforcementLearning #A2C #PPO #DQN #SAC #EnergyOptimization #GRU #MultiAgentRL
           </p>
         </div>
 
         <div className="project">
-          <h2>Autism Spectrum Disorder Detection - CNN Ensembles</h2>
+          <h2>Autism Spectrum Disorder Detection – CNN Ensembles</h2>
           <p>
-            Built an ensemble of VGG16, MobileNet, InceptionV3, and ResNet50 with transfer learning and fine-tuning for facial-expression classification.
-            Applied class-imbalance handling with weighted loss and on-the-fly augmentation; evaluated with stratified k-fold, ROC-AUC, F1, and calibration curves.
-            Added Grad-CAM for interpretability.
+            Built an ensemble of <b>VGG16</b>, <b>MobileNet</b>, <b>InceptionV3</b>, and <b>ResNet50</b> for facial-expression classification.
+            Applied class-imbalance handling, augmentation, and Grad-CAM visualization for explainability.
+          </p>
+          <p className="tags">
+            #CNN #TransferLearning #EnsembleLearning #ComputerVision #GradCAM #DeepLearning
           </p>
         </div>
 
         <div className="project">
           <h2>COVID-19 Diagnosis from Chest X-Rays</h2>
           <p>
-            Trained CNNs on pulmonary opacity patterns with lung-field preprocessing and intensity normalization to reduce domain shift.
-            Reached 93.7% accuracy with sensitivity, specificity, and AUC reporting; implemented early stopping and learning-rate scheduling.
-            Deployed a batch inference pipeline with configurable thresholds for precision-recall trade-offs.
+            Trained CNNs on lung-segmented CXR images with intensity normalization.
+            Achieved 93.7 % accuracy with AUC and F1 reporting; deployed batch inference pipeline with threshold tuning.
+          </p>
+          <p className="tags">
+            #CNN #MedicalImaging #ChestXRay #DeepLearning #AUC #DataPreprocessing
           </p>
         </div>
 
         <div className="project">
           <h2>Intracranial Hemorrhage Detection on Head CT</h2>
           <p>
-            Built a multi-type ICH classifier with windowing, artifact reduction, and lightweight skull-stripping.
-            Achieved ~87% accuracy with per-subtype metrics and macro F1 for imbalance robustness; produced Grad-CAM heatmaps for clinician review.
-            Shipped a Streamlit app to Heroku with a CPU-optimized model.
+            Developed multi-type ICH classifier with windowing and artifact reduction.
+            Achieved ~87 % accuracy with macro F1; visualized Grad-CAM heatmaps for clinical review. Deployed to Heroku.
+          </p>
+          <p className="tags">
+            #CTScan #MedicalAI #DeepLearning #GradCAM #Classification #HealthcareAI
           </p>
         </div>
 
         <div className="project">
           <h2>SHUSSH! · Context-Aware Android App</h2>
           <p>
-            Implemented geofencing and device-orientation logic to auto-silence devices in user zones using Flutter.
-            Built secure auth and sync with Firebase Auth and Firestore; applied Provider for state management and Material design for UI.
-            Integrated analytics, crash reporting, and a privacy-aware permissions flow.
+            Implemented geofencing and orientation-based auto-silencing using <b>Flutter</b>.
+            Integrated <b>Firebase Auth</b> + <b>Firestore</b> for sync and analytics; used Provider for state management.
+          </p>
+          <p className="tags">
+            #Flutter #Firebase #Firestore #Geofencing #MobileApp #ContextAwareAI
           </p>
         </div>
 
         <div className="project">
-          <h2>Autonomous Delivery Drone - Embedded Navigation</h2>
+          <h2>Autonomous Delivery Drone – Embedded Navigation</h2>
           <p>
-            Configured Raspberry Pi flight control with PID-tuned stabilization using GPS and IMU telemetry for waypoint navigation.
-            Prototyped mission planning and failsafe behaviors; logged telemetry for diagnostics and controller re-tuning.
-            Structured real-time loops and basic sensor fusion for reliability.
+            Configured <b>Raspberry Pi</b> flight control with PID-tuned stabilization using GPS and IMU telemetry.
+            Implemented mission planning and failsafe loops for robust autonomous flight.
+          </p>
+          <p className="tags">
+            #EmbeddedSystems #PID #Navigation #DroneAI #IoT #Autonomy
           </p>
         </div>
 
         <div className="project">
           <h2>WeatherBot · Serverless Conversational AI on AWS</h2>
           <p>
-            Built a task-oriented chatbot with Amazon Lex, Lambda backends in Python, and API Gateway for external weather APIs secured via IAM.
-            Implemented an Amplify front end with Cognito authentication; added CloudWatch metrics and structured logs with retry and backoff logic.
-            Designed intents and entities for robust NLP disambiguation of location, dates, and units.
+            Built a task-oriented chatbot with <b>Amazon Lex</b> and <b>Lambda</b> (Python) secured via IAM and API Gateway.
+            Integrated <b>Amplify</b> frontend with <b>Cognito</b> auth and <b>CloudWatch</b> logging.
+          </p>
+          <p className="tags">
+            #AWS #Lex #Lambda #Cognito #Amplify #Serverless #Chatbot #NLP
           </p>
         </div>
 
         <div className="project">
           <h2>Tailor App · Vertical CRUD with SMS Ops</h2>
           <p>
-            Delivered order tracking and billing with a normalized Firestore schema, offline-first caching, and role-based access.
-            Automated Twilio SMS notifications using idempotent cloud functions with error telemetry.
-            Added CSV export, search and filter, and incremental sync for operational reliability.
+            Delivered order tracking and billing with normalized Firestore schema and offline-first caching.
+            Automated <b>Twilio</b> SMS notifications via cloud functions with telemetry; added CSV export and search.
+          </p>
+          <p className="tags">
+            #Firestore #Twilio #CloudFunctions #CRUD #Firebase #OfflineFirst
           </p>
         </div>
 
         <div className="project">
           <h2>3D Skeleton-Based Action Recognition</h2>
           <p>
-            Processed UTD-MHAD skeleton streams and engineered kinematic features including joint angles, velocities, and pairwise distances for classic ML baselines.
-            Explored an ST-GCN baseline to model spatiotemporal dependencies; compared accuracy and F1 across feature and graph approaches with temporal smoothing.
+            Processed UTD-MHAD skeleton streams and engineered kinematic features for ML baselines.
+            Evaluated <b>ST-GCN</b> for spatiotemporal dependencies and benchmarked accuracy vs feature models.
+          </p>
+          <p className="tags">
+            #ActionRecognition #SkeletonData #GraphNeuralNetwork #STGCN #MachineLearning
           </p>
         </div>
 
         <div className="project">
-          <h2>Surviving Airplane Disasters - Unsupervised Analysis</h2>
+          <h2>Surviving Airplane Disasters – Unsupervised Analysis</h2>
           <p>
-            Engineered features from weather, aircraft metadata, and route context; applied PCA and k-means with silhouette and elbow diagnostics.
-            Interpreted clusters with partial-dependence style plots and SHAP-like heuristics to surface risk patterns for hypothesis generation.
+            Engineered features from weather and route context; applied <b>PCA</b> and <b>K-Means</b> with silhouette 0.83.
+            Interpreted clusters using partial-dependence plots for risk pattern analysis.
+          </p>
+          <p className="tags">
+            #UnsupervisedLearning #PCA #KMeans #Clustering #FeatureEngineering #DataScience
           </p>
         </div>
 
         <div className="project">
-          <h2>NIFTY50 Market Analysis - BI Dashboards</h2>
+          <h2>NIFTY50 Market Analysis – BI Dashboards</h2>
           <p>
-            Built interactive Tableau dashboards for price and volume regimes with filters, relative returns, drawdowns, and sector aggregation.
-            Implemented moving averages and volatility bands to highlight regime shifts; ensured data hygiene and trading-day alignment for consistent comparisons.
+            Built interactive <b>Tableau</b> dashboards for price/volume regimes with filters and sector aggregation.
+            Applied volatility bands and moving averages to highlight market regime shifts.
+          </p>
+          <p className="tags">
+            #DataVisualization #Tableau #Finance #BI #Analytics
           </p>
         </div>
 
