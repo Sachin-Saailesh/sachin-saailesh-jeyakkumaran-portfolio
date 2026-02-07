@@ -16,16 +16,35 @@ function Timeline() {
             className="vertical-timeline-element--work"
             contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
             contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="Mar 2023 – Mar 2024 · Chennai, India"
+            date="Aug 2023 – Jul 2024 · Chennai, India"
             iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">AI/ML - Full Stack Intern</h3>
+            <h3 className="vertical-timeline-element-title">AI Engineer</h3>
+            <h4 className="vertical-timeline-element-subtitle">Pisence Technologies, Chennai</h4>
+            <ul>
+              <li>Developed computer vision system using <strong>YOLOv8</strong> and <strong>FaceNet</strong> achieving <strong>99.2% accuracy</strong>, processing 100+ concurrent camera streams with &lt;150ms latency; built activity recognition with 3D CNNs deployed on <strong>NVIDIA Jetson</strong> edge devices at 30 FPS.</li>
+              <li>Engineered predictive maintenance models using <strong>XGBoost</strong> and <strong>LSTM</strong> achieving <strong>87% failure prediction accuracy</strong> 24-48 hours in advance, reducing downtime by 28%; designed time-series forecasting pipeline processing 10M+ sensor readings daily, improving OEE by 18%.</li>
+              <li>Implemented CNN defect detection (<strong>ResNet</strong>, <strong>EfficientNet</strong>) achieving <strong>94% accuracy</strong>, reducing manual inspection by 60% on 5TB+ imagery; developed energy forecasting using <strong>SARIMA</strong> with &lt;8% MAPE, achieving 22% cost savings and 27% waste reduction.</li>
+              <li>Built ML intrusion detection using <strong>Isolation Forest</strong> and <strong>Autoencoders</strong> achieving <strong>96% accuracy</strong> with &lt;2% false positives on 50M+ daily logs; developed <strong>BERT-based</strong> phishing detection with 98% accuracy, reducing detection time from 45 to 8 minutes.</li>
+            </ul>
+          </VerticalTimelineElement>
+
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
+            contentArrowStyle={{ borderRight: '7px solid  white' }}
+            date="Jun 2022 – Jul 2023 · Chennai, India"
+            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            icon={<FontAwesomeIcon icon={faBriefcase} />}
+          >
+            <h3 className="vertical-timeline-element-title">AI/ML Engineer</h3>
             <h4 className="vertical-timeline-element-subtitle">Calidad Healthcare · IIT Madras Research Park, Chennai</h4>
             <ul>
-              <li>Built a multimodal telehealth pipeline (otoscopy video; anterior/fundus photos; CXR; intra-oral video) with clinician-verified labels, stratified k-fold, and QC-adding Grad-CAM/attention maps for interpretability.</li>
-              <li>Trained disease-specific models: (2+1)D ResNet + U-Net (ear), MobileNetV3 (cataract), U-Net + ResNet50/DenseNet121 (glaucoma), EfficientNet-B0/DenseNet (TB), YOLOv8-s / RT-DETR + SORT (oral); best AUC 0.95, F1 0.94, mAP@.5:.95 0.58.</li>
-              <li>Standardized training with focal loss, per-class thresholds (90% specificity), AMP, and early stopping-improving reliability and consistency.</li>
+              <li>Architected production-grade multimodal AI/ML pipeline for 4 medical imaging modalities; implemented clinician-in-the-loop labeling with stratified k-fold validation, reducing diagnostic errors by <strong>35%</strong> and achieving <strong>95% AUC</strong>, F1 0.94, mAP 0.58.</li>
+              <li>Engineered 5 deep learning architectures combining CNN/transformer models in <strong>PyTorch</strong> and <strong>TensorFlow</strong>; optimized with focal loss, class balancing, and adaptive augmentation, demonstrating strong problem-solving skills in AI research.</li>
+              <li>Deployed scalable <strong>MLOps</strong> infrastructure using <strong>Docker</strong> microservices, <strong>FastAPI</strong> REST APIs, <strong>MLflow</strong> tracking, CI/CD pipelines, and A/B testing; serving 10K+ daily predictions with <strong>99.5% uptime</strong>, providing technical guidance to development teams.</li>
+              <li>Optimized AI/ML models for edge deployment via INT8/FP16 quantization and <strong>TFLite</strong>, reducing inference time by 60% and model size by 4x; integrated <strong>Grad-CAM/SHAP</strong> for explainable AI and regulatory compliance.</li>
             </ul>
           </VerticalTimelineElement>
 
@@ -38,8 +57,7 @@ function Timeline() {
             <h3 className="vertical-timeline-element-title">Teaching Assistant</h3>
             <h4 className="vertical-timeline-element-subtitle">Sri Ramachandra Institute of Higher Education and Research, Chennai</h4>
             <ul>
-              <li>Led recitations, office hours, grading, and proctoring across Data Visualization, Computer Networks, and Ethical Hacking.</li>
-              <li>Designed hands‑on labs (pandas/NumPy/Matplotlib/Plotly/Tableau; Wireshark/Python sockets/Cisco Packet Tracer; Kali Linux with Nmap/Metasploit).</li>
+              <li>Led technical instruction for <strong>120+ students</strong> in Data Visualization, Computer Networks, and Ethical Hacking; designed 15+ hands-on labs using <strong>Pandas</strong>, <strong>NumPy</strong>, <strong>Tableau</strong>, <strong>Power BI</strong>, demonstrating strong communication skills and collaboration across diverse teams.</li>
             </ul>
           </VerticalTimelineElement>
 

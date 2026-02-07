@@ -28,7 +28,7 @@ function Contact() {
       const body = encodeURIComponent(
         `Hi Sachin,\n\n${message}\n\n— ${name} (${email})`
       );
-      window.location.href = `mailto:sjeyakku@buffalo.edu?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:sachin.jeyy@gmail.com?subject=${subject}&body=${body}`;
 
       setName(''); setEmail(''); setMessage('');
     }
