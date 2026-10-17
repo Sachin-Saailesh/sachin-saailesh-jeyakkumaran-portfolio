@@ -1,78 +1,101 @@
-
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
-import Chip from '@mui/material/Chip';
+import { faAws, faDocker, faPython } from '@fortawesome/free-brands-svg-icons';
 import '../assets/styles/Expertise.scss';
 
 const aiml = [
-  "PyTorch", "TensorFlow", "Keras", "scikit-learn", "XGBoost", "LightGBM",
-  "YOLO", "RT-DETR", "FaceNet", "ResNet", "EfficientNet", "BERT", "Transformers",
-  "LSTM", "3D CNNs", "Computer Vision", "NLP", "Time-Series Forecasting"
+  "PyTorch", "TensorFlow", "Transformers", "BERT", "LangGraph", "CrewAI",
+  "Google ADK", "ReAct", "OpenAI", "Deepgram", "ElevenLabs",
+  "LoRA / QLoRA", "RLHF / DPO", "Prompt Engineering", "Function / Tool Calling",
+  "Pydantic", "Instructor"
 ];
 
 const mlops = [
-  "Docker", "Kubernetes", "MLflow", "TensorFlow Lite", "ONNX", "TensorRT", "TorchScript",
-  "Model Quantization (INT8/FP16)", "NVIDIA Jetson", "CI/CD", "A/B Testing",
-  "FastAPI", "REST APIs", "Grad-CAM", "SHAP"
+  "FastAPI", "Docker", "Kubernetes", "Airflow", "MLflow", "CI/CD",
+  "NVIDIA Triton", "vLLM", "TensorRT", "Prometheus", "OpenTelemetry",
+  "LLM-as-Judge", "LangSmith", "Ragas", "DeepEval", "A/B Testing",
+  "Lumoz AI", "Groundcover"
 ];
 
 const data = [
-  "Python", "C++", "SQL", "Bash", "Pandas", "NumPy", "Apache Spark",
-  "PostgreSQL", "MySQL", "Redis", "Kafka", "Prometheus", "Grafana", "Tableau",
-  "Power BI", "Qdrant"
-];
-
-const cloud = [
-  "AWS (EC2, S3, Lambda, SageMaker)", "Azure", "GCP", "Linux", "Git"
+  "RAG", "Pinecone", "Qdrant", "ChromaDB", "Neo4j", "Cohere Rerank",
+  "Dialogflow", "AWS (S3, Lambda, ECR, Bedrock)", "Azure", "GCP", "Vertex AI",
+  "LiveKit", "Twilio", "Redis", "Kafka", "PostgreSQL", "Datadog", "Terraform",
+  "Python", "C++", "SQL", "Java", "JavaScript", "Node.js", "Bash", "Git"
 ];
 
 function Expertise() {
   return (
     <div className="container" id="expertise">
-      <div className="skills-container">
-        <h1>Expertise</h1>
+      <div className="expertise-section">
 
-        <div className="skills-grid">
-          <div className="skill">
-            <FontAwesomeIcon icon={faPython} size="3x" />
-            <h3>AI/ML & Deep Learning</h3>
+        <div className="expertise-header">
+          <span className="section-eyebrow">Domain Mastery</span>
+          <h2 className="expertise-heading">Core Expertise</h2>
+        </div>
+
+        <div className="expertise-grid">
+
+          {/* Card 1 – AI/ML */}
+          <div className="expertise-card">
+            <div className="expertise-card-watermark" aria-hidden="true">
+              <FontAwesomeIcon icon={faPython} />
+            </div>
+            <div className="expertise-card-icon icon-primary">
+              <FontAwesomeIcon icon={faPython} />
+            </div>
+            <h3>AI / ML, LLMs &amp; Agents</h3>
             <p>
-              Expert in production AI systems: computer vision, NLP, time-series forecasting, and anomaly detection. I build reliable training pipelines, optimize for edge deployment, and deliver explainable AI solutions.
+              Agentic and voice AI systems built on deep learning frameworks, LLM fine-tuning
+              (LoRA, QLoRA, RLHF, DPO), and structured tool calling.
             </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tech Stack:</span>
-              {aiml.map((label, i) => <Chip key={i} className='chip' label={label} />)}
+            <div className="expertise-tags">
+              {aiml.map((label, i) => (
+                <span key={i} className="expertise-tag">{label}</span>
+              ))}
             </div>
           </div>
 
-          <div className="skill">
-            <FontAwesomeIcon icon={faDocker} size="3x" />
-            <h3>MLOps & Production Deployment</h3>
+          {/* Card 2 – MLOps */}
+          <div className="expertise-card">
+            <div className="expertise-card-watermark" aria-hidden="true">
+              <FontAwesomeIcon icon={faDocker} />
+            </div>
+            <div className="expertise-card-icon icon-secondary">
+              <FontAwesomeIcon icon={faDocker} />
+            </div>
+            <h3>MLOps, Deployment &amp; Evaluation</h3>
             <p>
-              Scalable ML deployment with Docker/Kubernetes, model optimization (quantization, ONNX, TensorRT), real-time inference APIs, and comprehensive monitoring. Edge AI expertise with NVIDIA Jetson.
+              Containerized model serving on Docker/Kubernetes with Triton and vLLM, plus
+              evaluation-driven optimization through LLM-as-judge scoring, tracing, and A/B tests.
             </p>
-            <div className="flex-chips">
-              <span className="chip-title">Ecosystem:</span>
-              {mlops.map((label, i) => <Chip key={i} className='chip' label={label} />)}
+            <div className="expertise-tags">
+              {mlops.map((label, i) => (
+                <span key={i} className="expertise-tag">{label}</span>
+              ))}
             </div>
           </div>
 
-          <div className="skill">
-            <FontAwesomeIcon icon={faReact} size="3x" />
-            <h3>Data Engineering & Cloud</h3>
-            <p>
-              End-to-end data pipelines with Apache Spark, distributed processing, vector databases, and cloud platforms. Strong foundation in programming (Python, C++, SQL) and BI tools (Tableau, Power BI).
-            </p>
-            <div className="flex-chips">
-              <span className="chip-title">Tools:</span>
-              {data.map((label, i) => <Chip key={i} className='chip' label={label} />)}
+          {/* Card 3 – Data & Cloud */}
+          <div className="expertise-card">
+            <div className="expertise-card-watermark" aria-hidden="true">
+              <FontAwesomeIcon icon={faAws} />
             </div>
-            <div className="flex-chips">
-              <span className="chip-title">Cloud & DevOps:</span>
-              {cloud.map((label, i) => <Chip key={i} className='chip' label={label} />)}
+            <div className="expertise-card-icon icon-tertiary">
+              <FontAwesomeIcon icon={faAws} />
+            </div>
+            <h3>Retrieval, Cloud &amp; Data</h3>
+            <p>
+              Hybrid RAG over vector and graph stores, real-time voice infrastructure, and
+              cloud-native systems across AWS, Azure, and GCP.
+            </p>
+            <div className="expertise-tags">
+              {data.map((label, i) => (
+                <span key={i} className="expertise-tag">{label}</span>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>

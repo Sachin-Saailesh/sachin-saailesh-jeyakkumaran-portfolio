@@ -1,137 +1,232 @@
-
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import '../assets/styles/Timeline.scss'
+import '../assets/styles/Timeline.scss';
+
+/* Shared card surface */
+const workCardStyle   = { background: '#1a1c20', color: '#e2e2e8', border: '1px solid rgba(73,68,85,0.2)', boxShadow: 'none' };
+const workArrowStyle  = { borderRight: '7px solid #1a1c20' };
+const eduCardStyle    = { background: '#1a1c20', color: '#e2e2e8', border: '1px solid rgba(137,206,255,0.12)', boxShadow: 'none' };
+const eduArrowStyle   = { borderRight: '7px solid #1a1c20' };
 
 function Timeline() {
   return (
     <div id="history">
-      <div className="items-container">
-        <h1>Experience & Education</h1>
+      <div className="items-container timeline-wrapper">
+        <div className="timeline-header">
+          <span className="section-eyebrow">Career Path</span>
+          <h2 className="timeline-heading">Experience &amp; Education</h2>
+        </div>
+
         <VerticalTimeline>
+
+          {/* ── Tabhi ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-            contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="Aug 2023 – Jul 2024 · Chennai, India"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            contentStyle={workCardStyle}
+            contentArrowStyle={workArrowStyle}
+            date="May 2026 – Present"
+            iconStyle={{ background: '#5000ca', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">AI Engineer</h3>
-            <h4 className="vertical-timeline-element-subtitle">Pisence Technologies, Chennai</h4>
-            <ul>
-              <li>Developed computer vision system using <strong>YOLOv8</strong> and <strong>FaceNet</strong> achieving <strong>99.2% accuracy</strong>, processing 100+ concurrent camera streams with &lt;150ms latency; built activity recognition with 3D CNNs deployed on <strong>NVIDIA Jetson</strong> edge devices at 30 FPS.</li>
-              <li>Engineered predictive maintenance models using <strong>XGBoost</strong> and <strong>LSTM</strong> achieving <strong>87% failure prediction accuracy</strong> 24-48 hours in advance, reducing downtime by 28%; designed time-series forecasting pipeline processing 10M+ sensor readings daily, improving OEE by 18%.</li>
-              <li>Implemented CNN defect detection (<strong>ResNet</strong>, <strong>EfficientNet</strong>) achieving <strong>94% accuracy</strong>, reducing manual inspection by 60% on 5TB+ imagery; developed energy forecasting using <strong>SARIMA</strong> with &lt;8% MAPE, achieving 22% cost savings and 27% waste reduction.</li>
-              <li>Built ML intrusion detection using <strong>Isolation Forest</strong> and <strong>Autoencoders</strong> achieving <strong>96% accuracy</strong> with &lt;2% false positives on 50M+ daily logs; developed <strong>BERT-based</strong> phishing detection with 98% accuracy, reducing detection time from 45 to 8 minutes.</li>
+            <span className="tl-badge tl-badge-work">AI Builder</span>
+            <h3 className="tl-role">AI Builder</h3>
+            <h4 className="tl-company">Tabhi</h4>
+            <ul className="tl-bullets">
+              <li>
+                Launched <strong>TACO</strong> (Tabhi Agentic Call-CenterOps), a voice agent fielding
+                travel-disruption calls over Twilio PSTN into LiveKit with Soniox STT, Gemini Flash,
+                Cartesia TTS, and Google ADK orchestration at <strong>500ms voice-to-voice latency</strong>.
+              </li>
+              <li>
+                Automated airline rebooking, ticket reissue, and hotel and restaurant reservations by
+                resolving caller PNRs against airline GDS and partner APIs; idempotency keys and spoken
+                confirmation gate every fare-difference charge.
+              </li>
+              <li>
+                Provisioned GKE clusters, LiveKit media servers, and Twilio SIP trunks via{' '}
+                <strong>Terraform</strong>; autoscaled ADK agent pods with graceful draining, sustaining{' '}
+                <strong>100 concurrent calls</strong> at peak without dropped sessions.
+              </li>
+              <li>
+                Instrumented Groundcover monitoring across STT→LLM→TTS spans; cascading TTS vendor failover
+                and warm transfer to live agents cut abandoned calls <strong>18%</strong> during outages.
+              </li>
+              <li>
+                Raised call containment from <strong>52% to 68%</strong> by mining failed-call transcripts
+                weekly with ops; cut cost per resolved call <strong>21%</strong> via model routing and TTS
+                caching of static turns.
+              </li>
             </ul>
           </VerticalTimelineElement>
 
+          {/* ── Rebecca Everlene Trust Company ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            contentStyle={{ background: 'white', color: 'rgb(39, 40, 34)' }}
-            contentArrowStyle={{ borderRight: '7px solid  white' }}
-            date="Jun 2022 – Jul 2023 · Chennai, India"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            contentStyle={workCardStyle}
+            contentArrowStyle={workArrowStyle}
+            date="Feb 2026 – May 2026"
+            iconStyle={{ background: '#5000ca', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">AI/ML Engineer</h3>
-            <h4 className="vertical-timeline-element-subtitle">Calidad Healthcare · IIT Madras Research Park, Chennai</h4>
-            <ul>
-              <li>Architected production-grade multimodal AI/ML pipeline for 4 medical imaging modalities; implemented clinician-in-the-loop labeling with stratified k-fold validation, reducing diagnostic errors by <strong>35%</strong> and achieving <strong>95% AUC</strong>, F1 0.94, mAP 0.58.</li>
-              <li>Engineered 5 deep learning architectures combining CNN/transformer models in <strong>PyTorch</strong> and <strong>TensorFlow</strong>; optimized with focal loss, class balancing, and adaptive augmentation, demonstrating strong problem-solving skills in AI research.</li>
-              <li>Deployed scalable <strong>MLOps</strong> infrastructure using <strong>Docker</strong> microservices, <strong>FastAPI</strong> REST APIs, <strong>MLflow</strong> tracking, CI/CD pipelines, and A/B testing; serving 10K+ daily predictions with <strong>99.5% uptime</strong>, providing technical guidance to development teams.</li>
-              <li>Optimized AI/ML models for edge deployment via INT8/FP16 quantization and <strong>TFLite</strong>, reducing inference time by 60% and model size by 4x; integrated <strong>Grad-CAM/SHAP</strong> for explainable AI and regulatory compliance.</li>
+            <span className="tl-badge tl-badge-work">AI Engineer</span>
+            <h3 className="tl-role">AI Engineer</h3>
+            <h4 className="tl-company">Rebecca Everlene Trust Company</h4>
+            <ul className="tl-bullets">
+              <li>
+                Owned end-to-end delivery of LLM features for enterprise HCM clients on FastAPI, Google ADK,
+                and AWS Bedrock; shipped <strong>6+ workflows</strong> across 4 deployments, cutting manual
+                processing <strong>35%</strong>.
+              </li>
+              <li>
+                Engineered entitlement-aware RAG over HR, payroll, and compliance data with hybrid BM25/dense{' '}
+                <strong>Pinecone</strong> retrieval, cross-encoder reranking, and jurisdiction and permission
+                filters; lifted <strong>Recall@5 24%</strong> and cut ungrounded answers <strong>30%</strong>.
+              </li>
+              <li>
+                Built agentic workflows in Google ADK with tool calling and <strong>MCP</strong> into AWS
+                Lambda, S3, and client APIs, gating payroll writes behind human approval; idempotent retries
+                and durable session state eliminated double-posting.
+              </li>
+              <li>
+                Established an eval and traceability layer with Lumoz eval suites, LLM-as-judge groundedness
+                scoring, and OpenTelemetry tracing; delivered per-decision audit trails under{' '}
+                <strong>NYC LL 144</strong> and <strong>Illinois HB 3773</strong>.
+              </li>
             </ul>
           </VerticalTimelineElement>
 
+          {/* ── PiSence Technologies ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="Feb 2023 – Jun 2023 · Chennai, India"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            contentStyle={workCardStyle}
+            contentArrowStyle={workArrowStyle}
+            date="Aug 2023 – Jul 2024 · Chennai"
+            iconStyle={{ background: '#5000ca', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Teaching Assistant</h3>
-            <h4 className="vertical-timeline-element-subtitle">Sri Ramachandra Institute of Higher Education and Research, Chennai</h4>
-            <ul>
-              <li>Led technical instruction for <strong>120+ students</strong> in Data Visualization, Computer Networks, and Ethical Hacking; designed 15+ hands-on labs using <strong>Pandas</strong>, <strong>NumPy</strong>, <strong>Tableau</strong>, <strong>Power BI</strong>, demonstrating strong communication skills and collaboration across diverse teams.</li>
+            <span className="tl-badge tl-badge-work">AI Engineer</span>
+            <h3 className="tl-role">AI Engineer</h3>
+            <h4 className="tl-company">PiSence Technologies</h4>
+            <ul className="tl-bullets">
+              <li>
+                Architected an end-to-end distributed video analytics platform on <strong>AWS SageMaker</strong>,
+                handling <strong>100+ concurrent camera streams</strong> at <strong>30 FPS</strong> with real-time
+                edge deployment for activity recognition and compliance.
+              </li>
+              <li>
+                Engineered an async FastAPI microservice backed by <strong>Triton Inference Server</strong>,
+                sustaining <strong>sub-150ms latency</strong> with fallback routing and graceful degradation.
+              </li>
+              <li>
+                Productionized predictive maintenance pipelines with <strong>LSTM</strong> and{' '}
+                <strong>XGBoost</strong>, MLflow, and Evidently AI drift detection; delivered{' '}
+                <strong>24–48h failure prediction</strong> and <strong>28%</strong> less downtime across
+                10M+ daily sensor readings.
+              </li>
+              <li>
+                Deployed anomaly and intrusion detection over <strong>50M+ daily logs</strong> using Isolation
+                Forest and Autoencoders, with <strong>Prometheus/OpenTelemetry</strong> dashboards for drift,
+                latency, and pipeline health.
+              </li>
             </ul>
           </VerticalTimelineElement>
 
+          {/* ── Calidad Healthcare ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--work"
-            date="Feb 2021 – Apr 2021 · Remote"
-            iconStyle={{ background: '#5000ca', color: 'rgb(39, 40, 34)' }}
+            contentStyle={workCardStyle}
+            contentArrowStyle={workArrowStyle}
+            date="Jun 2022 – Jul 2023 · Chennai"
+            iconStyle={{ background: '#5000ca', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faBriefcase} />}
           >
-            <h3 className="vertical-timeline-element-title">Mobile Application Developer Intern</h3>
-            <h4 className="vertical-timeline-element-subtitle">AUSWEG Automation, Remote</h4>
-            <ul>
-              <li>Built a Flutter workforce app with background location (FusedLocationProvider, WorkManager), shift‑aware tracking, and offline‑first sync (SQLite + Firestore).</li>
-              <li>Implemented real‑time operations console with Firestore, Cloud Functions, Google Maps; added on‑device OpenCV facial‑expression sentiment via lightweight CNN/SVM.</li>
+            <span className="tl-badge tl-badge-work">AI/ML Engineer</span>
+            <h3 className="tl-role">AI/ML Engineer</h3>
+            <h4 className="tl-company">Calidad Healthcare · IIT Madras Research Park</h4>
+            <ul className="tl-bullets">
+              <li>
+                Built a HIPAA-compliant multimodal AI platform across <strong>4 imaging modalities</strong> with
+                Dockerized FastAPI, serving <strong>2K+ daily clinical predictions</strong> at{' '}
+                <strong>99.5% uptime</strong> with full audit trails.
+              </li>
+              <li>
+                Partnered with radiologists and clinical staff across <strong>3 hospital sites</strong> to turn
+                clinical workflows into model eval criteria; cut diagnostic errors by <strong>35%</strong>.
+              </li>
+              <li>
+                Trained CNN and transformer models in PyTorch/TensorFlow with focal loss, class balancing,
+                and adaptive augmentation; governed experiments via MLflow for reproducible versioning.
+              </li>
+              <li>
+                Translated <strong>Grad-CAM</strong> and <strong>SHAP</strong> outputs into plain narratives
+                for clinical admins, speeding deployment approvals by <strong>3 weeks per site</strong>.
+              </li>
             </ul>
           </VerticalTimelineElement>
 
+          {/* ── Teaching Assistant ── */}
+          <VerticalTimelineElement
+            className="vertical-timeline-element--work"
+            contentStyle={workCardStyle}
+            contentArrowStyle={workArrowStyle}
+            date="Feb 2023 – Jun 2023 · Chennai"
+            iconStyle={{ background: '#333539', color: '#cbc3d8' }}
+            icon={<FontAwesomeIcon icon={faBriefcase} />}
+          >
+            <span className="tl-badge tl-badge-ta">Teaching Assistant</span>
+            <h3 className="tl-role">Teaching Assistant</h3>
+            <h4 className="tl-company">Sri Ramachandra Institute of Higher Education</h4>
+            <ul className="tl-bullets">
+              <li>
+                Delivered technical instruction to <strong>120+ students</strong> across Data Visualization,
+                Computer Networks, and Ethical Hacking; designed hands-on labs using Pandas, Tableau, and Power BI.
+              </li>
+            </ul>
+          </VerticalTimelineElement>
+
+          {/* ── UB MS ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--education"
+            contentStyle={eduCardStyle}
+            contentArrowStyle={eduArrowStyle}
             date="2024 – 2026 · Buffalo, NY"
-            iconStyle={{ background: '#0ea5e9', color: 'rgb(39, 40, 34)' }}
+            iconStyle={{ background: '#0ea5e9', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
-            <h3 className="vertical-timeline-element-title">M.S. Artificial Intelligence</h3>
-            <h4 className="vertical-timeline-element-subtitle">University at Buffalo (SUNY), New York</h4>
-            <p>GPA: 3.22/4.0</p>
-            <p>
-              Core coursework in <strong>Machine Learning, Reinforcement Learning,
-                Pattern Recognition, Computer Vision, Data Intensive Computing,
-                Algorithms, and Data Modeling</strong>, complemented by
-              <strong> AI & Robotics Integration</strong>.
+            <span className="tl-badge tl-badge-edu">Graduate</span>
+            <h3 className="tl-role">M.S. Artificial Intelligence</h3>
+            <h4 className="tl-company">University at Buffalo (SUNY) &nbsp;·&nbsp; GPA 3.3/4.0</h4>
+            <p className="tl-body">
+              Coursework: Machine Learning, Reinforcement Learning, Pattern Recognition, Computer Vision,
+              Data Intensive Computing, Algorithms, and Data Modeling.
             </p>
-            <p>
-              Currently working on an AI-based research project at
-              <strong> XLab @UB</strong>, under the guidance of
-              <strong> Prof. Dr. Jinjun Xiong</strong> from the Institute for
-              Artificial Intelligence and Data Science.
+            <p className="tl-body">
+              Research at <strong>XLab @UB</strong> under Prof. Dr. Jinjun Xiong,
+              Institute for Artificial Intelligence and Data Science.
             </p>
           </VerticalTimelineElement>
 
-
-
+          {/* ── B.Tech ── */}
           <VerticalTimelineElement
             className="vertical-timeline-element--education"
+            contentStyle={eduCardStyle}
+            contentArrowStyle={eduArrowStyle}
             date="2019 – 2023 · Chennai, India"
-            iconStyle={{ background: '#0ea5e9', color: 'rgb(39, 40, 34)' }}
+            iconStyle={{ background: '#0ea5e9', color: '#fff' }}
             icon={<FontAwesomeIcon icon={faGraduationCap} />}
           >
-            <h3 className="vertical-timeline-element-title">B.Tech. Computer Science Engineering (Specialized in AI & ML)</h3>
-            <h4 className="vertical-timeline-element-subtitle">
-              Sri Ramachandra Faculty of Engineering & Technology
-            </h4>
-            <p>GPA: 8.41/10.0</p>
-            <p>
-              <strong>AI/ML:</strong> Artificial Intelligence & Machine Learning, Machine Learning I, Deep Learning,
-              Reinforcement Learning, Natural Language Processing (NLP), Computer Vision (CV), TensorFlow & Tools in Healthcare
-            </p>
-            <p>
-              <strong>Data Science:</strong> Data Science with R, Data Visualization Tools & Techniques, Data Mining,
-              Data Science Professional Cert., Business Analytics
-            </p>
-            <p>
-              <strong>Math/Stats:</strong> Probability & Statistics, Linear Algebra, Differential Equations,
-              Advanced Statistics, Discrete Mathematics
-            </p>
-            <p>
-              <strong>Foundations:</strong> Data Structures, Design & Analysis of Algorithms (DAA),
-              Database Management Systems (DBMS), Advanced Python Programming
+            <span className="tl-badge tl-badge-edu">Undergraduate</span>
+            <h3 className="tl-role">B.Tech. Computer Science Engineering (AI &amp; ML)</h3>
+            <h4 className="tl-company">Sri Ramachandra Faculty of Engineering &amp; Technology &nbsp;·&nbsp; GPA 8.41/10</h4>
+            <p className="tl-body">
+              Specialization in AI/ML, Deep Learning, Computer Vision, NLP, and Reinforcement Learning.
+              Additional coursework in Data Science, Probability &amp; Statistics, and Algorithms.
             </p>
           </VerticalTimelineElement>
 
-
-
-          {/* B.Tech. Computer Science Engineering (Artificial Intelligence & Machine Learning) */}
         </VerticalTimeline>
       </div>
     </div>

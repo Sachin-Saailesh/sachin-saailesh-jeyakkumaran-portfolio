@@ -1,199 +1,178 @@
 import React from "react";
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LaunchIcon from '@mui/icons-material/Launch';
 import "../assets/styles/Project.scss";
+
+interface Metric { label: string; value: string; }
+
+interface ProjectCardProps {
+  title: string;
+  description: React.ReactNode;
+  tags: string[];
+  metrics: [Metric, Metric];
+  github?: string;
+  demo?: string;
+}
+
+function ProjectCard({ title, description, tags, metrics, github, demo }: ProjectCardProps) {
+  return (
+    <div className="project-card">
+      <h2>{title}</h2>
+      <p className="project-description">{description}</p>
+
+      {/* Tech tags */}
+      <div className="project-tag-list">
+        {tags.map((t, i) => <span key={i} className="project-tag">{t}</span>)}
+      </div>
+
+      {/* Impact metrics */}
+      <div className="project-metrics">
+        {metrics.map((m, i) => (
+          <div key={i} className="metric-item">
+            <span className="metric-label">{m.label}</span>
+            <span className="metric-value">{m.value}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Buttons */}
+      <div className="project-links">
+        {github && (
+          <a href={github} target="_blank" rel="noreferrer" className="project-link-btn github-btn">
+            <GitHubIcon sx={{ fontSize: '0.95rem' }} /> GitHub
+          </a>
+        )}
+        {demo && (
+          <a href={demo} target="_blank" rel="noreferrer" className="project-link-btn demo-btn">
+            <LaunchIcon sx={{ fontSize: '0.95rem' }} /> Live Demo
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function Project() {
   return (
     <div className="projects-container" id="projects">
-      <h1>Projects</h1>
+      <div className="projects-header">
+        <div>
+          <span className="section-eyebrow">Portfolio</span>
+          <h1 className="projects-heading">Technical Projects</h1>
+        </div>
+        <p className="projects-subtext">
+          Voice agents, multi-agent systems, and AI/ML platforms built for production, research, and edge deployment.
+        </p>
+      </div>
+
       <div className="projects-grid">
 
-        {/* ==================== NEW PROJECTS ==================== */}
+        <ProjectCard
+          title="Maya: Real-Time Voice AI Event Planner"
+          description={<>Multi-step voice agent on <b>LiveKit</b> + <b>Whisper</b> resolving 12 conversation slots with &lt;2% slot-fill error. <b>ChromaDB</b> RAG, semantic caching, and LLM-as-judge eval cut hallucinations 43% and API calls 38% at &lt;1.6s end-to-end latency; a 38-scenario QA lab tracks STT→LLM→TTS regressions.</>}
+          tags={["Voice AI", "LiveKit", "Whisper", "FastAPI", "ChromaDB", "LangSmith", "React"]}
+          metrics={[
+            { label: "Intent Accuracy", value: "91%" },
+            { label: "Hallucinations", value: "−43%" },
+          ]}
+          github="https://github.com/Sachin-Saailesh/maya-event-planning-agent"
+        />
 
-        <div className="project">
-          <h2>Production RAG System: AI-Powered Code Intelligence with LLMs</h2>
-          <p>
-            Built enterprise AI/ML code intelligence platform using <b>Retrieval-Augmented Generation (RAG)</b>, hybrid retrieval (<b>Qdrant</b> vector database + <b>BM25</b> + <b>Cohere</b>), and LLMs; improved precision 22% with sub-12s latency for 50K+ file codebases.
-            Deployed modular AI analyzers for security scanning and architecture detection via <b>FastAPI</b> REST APIs, <b>Gradio</b>, and <b>Prometheus</b> monitoring; optimized to 3.4 GB memory, reduced AI hallucinations 29%, increased throughput 25%.
-          </p>
-          <p className="tags">
-            #RAG #LLM #Qdrant #BM25 #Cohere #FastAPI #Gradio #Prometheus #VectorDB #CodeAnalysis
-          </p>
-        </div>
+        <ProjectCard
+          title="LexMind: Multi-Agent Legal Intelligence"
+          description={<><b>LangGraph</b> orchestrator coordinating 5 specialist agents (contract, compliance, litigation, drafting, research) over 4-stage hybrid RAG (<b>Qdrant</b> + BM25 via RRF). A Hallucination Guard routes GPT-4o outputs under 70% confidence to human review, and attorney corrections feed back into retrieval.</>}
+          tags={["LangGraph", "Multi-Agent", "Qdrant", "Neo4j", "Azure OpenAI", "Ragas", "Next.js"]}
+          metrics={[
+            { label: "Review Time", value: "−60%" },
+            { label: "Eval Cases", value: "80+" },
+          ]}
+          github="https://github.com/Sachin-Saailesh/legal-intelligence-platform"
+        />
 
-        <div className="project">
-          <h2>Distributed Data Pipeline for LinkedIn Job Market Analytics</h2>
-          <p>
-            Engineered a distributed ETL pipeline to process 1.3 M LinkedIn job postings using <b>Apache Hadoop</b> and <b>PySpark</b> on <b>Google Dataproc</b>.
-            Designed scalable ingestion and transformation workflows with <b>HDFS</b>, <b>MapReduce</b>, and <b>Parquet</b> serialization.
-            Built preprocessing and feature engineering modules for ML-ready datasets supporting trend prediction and clustering.
-            Optimized throughput with <b>YARN</b> tuning and batch-level parallelism for 3× faster execution.
-          </p>
-          <p className="tags">
-            #DataEngineering #PySpark #Hadoop #HDFS #ETL #Dataproc #MapReduce #Parquet #YARN #BigData
-          </p>
-        </div>
+        <ProjectCard
+          title="AI Codebase Intelligence Platform"
+          description={<>Multi-tenant production RAG system with AST-aware chunking via <b>Tree-sitter</b>, hybrid retrieval (<b>Qdrant</b> + BM25 + Cohere reranking), and fault-tolerant orchestration. React/Vite SSE streaming UI with Redis semantic caching.</>}
+          tags={["RAG", "FastAPI", "Qdrant", "OpenAI", "Redis", "Tree-sitter", "React"]}
+          metrics={[
+            { label: "Scale", value: "10K+ file repos" },
+            { label: "Memory", value: "Flat scaling" },
+          ]}
+          // TODO: replace with your actual repo URL
+          github="https://github.com/Sachin-Saailesh/production-rag-code-intelligence-system"
+        />
 
-        <div className="project">
-          <h2>Relational Data Modeling for EV Adoption Analysis</h2>
-          <p>
-            Designed a <b>PostgreSQL</b> database for EV registration data with normalized schema and referential integrity.
-            Implemented <b>ETL pipelines</b> for CSV ingestion with <b>PL/pgSQL</b> procedures and validation triggers.
-            Indexed key attributes to improve query performance by &gt; 50%.
-            Applied <b>EXPLAIN ANALYZE</b> for query optimization and geospatial trend analytics.
-          </p>
-          <p className="tags">
-            #PostgreSQL #SQL #DatabaseDesign #PLpgSQL #ETL #Indexing #QueryOptimization #DataModeling
-          </p>
-        </div>
+        <ProjectCard
+          title="Edge AI Vision Security Platform"
+          description={<>End-to-end edge vision AI pipeline for degraded CCTV streams using <b>YOLOv8</b> with hard-negative mining (22K+ samples). ONNX-optimized inference with async <b>FastAPI</b> streaming and <b>Prometheus</b> telemetry.</>}
+          tags={["YOLOv8", "ONNX", "FastAPI", "Prometheus", "Edge AI", "Python"]}
+          metrics={[
+            { label: "HN Samples", value: "22K+" },
+            { label: "Deployment", value: "Multi-camera" },
+          ]}
+          // TODO: replace with your actual repo URL
+          github="https://github.com/Sachin-Saailesh/weapon-detection"
+        />
 
-        {/* ==================== EXISTING PROJECTS ==================== */}
+        <ProjectCard
+          title="Real-Time Weapon Detection: YOLOv11 vs RT-DETR"
+          description={<>Benchmarked <b>YOLOv11 (CNN)</b> vs <b>RT-DETR (Transformer)</b> on CCTV streams with AMP training. Streamlit evaluation toolkit with PR curves; exports in .pt / ONNX / TorchScript.</>}
+          tags={["YOLOv11", "RT-DETR", "ONNX", "TorchScript", "Streamlit", "CV"]}
+          metrics={[
+            { label: "RT-DETR mAP50", value: "83.0" },
+            { label: "Latency", value: "3.1 ms" },
+          ]}
+          github="https://github.com/Sachin-Saailesh/real-time-weapon-detection-benchmark"
+        />
 
-        <div className="project">
-          <h2>Real-Time Weapon Detection : YOLOv11 vs RT-DETR</h2>
-          <p>
-            Benchmarked <b>YOLOv11 (CNN)</b> vs <b>RT-DETR (Transformer)</b> on CCTV streams with AMP training.
-            RT-DETR achieved mAP50 83.0 / mAP50–95 37.2 / Recall 76.2 vs YOLOv11 77.8 / 34.9 / 73.6, latency 3.1 ms vs 18.7 ms.
-            Delivered a <b>Streamlit</b> evaluation toolkit with PR curves and class-wise mAP; exported .pt / ONNX / TorchScript.
-          </p>
-          <p className="tags">
-            #YOLOv11 #RTDETR #ComputerVision #ObjectDetection #Transformer #ONNX #TorchScript #Streamlit
-          </p>
-        </div>
+        <ProjectCard
+          title="Legal Judgment Prediction (LexGLUE)"
+          description={<>Long-document multi-label classifier with <b>Legal-BERT</b>, overlap chunking, and focal loss. Attention heatmaps and adaptive thresholding for interpretability on ECtHR Task B.</>}
+          tags={["Legal-BERT", "HuggingFace", "NLP", "Focal Loss", "Transformers"]}
+          metrics={[
+            { label: "F1", value: "0.741" },
+            { label: "Micro Acc", value: "0.923" },
+          ]}
+        />
 
-        <div className="project">
-          <h2>Legal Judgment Prediction (LexGLUE – ECtHR Task B)</h2>
-          <p>
-            Built a long-document multi-label classifier with <b>Legal-BERT</b> using overlap-chunking and [SEP].
-            Fine-tuned with <b>AdamW</b>, cosine LR schedule, gradient accumulation ×4, and focal loss.
-            Achieved F1 0.741 (val 0.747) and Micro Accuracy 0.923 (+2.9 F1 over BERT-base).
-            Added attention heatmaps and adaptive thresholding for interpretability.
-          </p>
-          <p className="tags">
-            #BERT #LegalBERT #NLP #TextClassification #HuggingFace #FocalLoss #Transformer #Explainability
-          </p>
-        </div>
+        <ProjectCard
+          title="CityLearn – Multi-Agent Energy Control"
+          description={<>Forecast-aware <b>GRU</b> controller for 18 buildings over 8,760 steps optimizing CO₂, peak load, and comfort. Benchmarked DQN, PPO, and SAC; GRU forecasts added +15.5% uplift.</>}
+          tags={["RL", "GRU", "PPO", "SAC", "DQN", "Multi-Agent", "Energy"]}
+          metrics={[
+            { label: "Over RBC", value: "~90%" },
+            { label: "GRU Uplift", value: "+15.5%" },
+          ]}
+        />
 
-        <div className="project">
-          <h2>CityLearn – Multi-Agent Energy Control</h2>
-          <p>
-            Designed a forecast-aware controller for 18 buildings over 8,760 steps using <b>GRU</b> forecasts.
-            Optimized a multi-objective cost combining CO₂, peak load, and comfort.
-            Benchmarked <b>DQN</b>, <b>PPO</b>, and <b>SAC</b>; best model achieved −13,580 reward (~90 % over RBC) with +15.5 % uplift from forecasts.
-          </p>
-          <p className="tags">
-            #ReinforcementLearning #A2C #PPO #DQN #SAC #EnergyOptimization #GRU #MultiAgentRL
-          </p>
-        </div>
+        <ProjectCard
+          title="Distributed Data Pipeline – LinkedIn Job Analytics"
+          description={<>ETL pipeline for 1.3M LinkedIn postings using <b>Apache Hadoop</b> and <b>PySpark</b> on <b>Google Dataproc</b>. HDFS + MapReduce + Parquet; YARN-tuned for 3× faster execution.</>}
+          tags={["PySpark", "Hadoop", "Dataproc", "ETL", "HDFS", "Parquet", "BigData"]}
+          metrics={[
+            { label: "Postings", value: "1.3M" },
+            { label: "Throughput", value: "3× faster" },
+          ]}
+        />
 
-        <div className="project">
-          <h2>Autism Spectrum Disorder Detection – CNN Ensembles</h2>
-          <p>
-            Built an ensemble of <b>VGG16</b>, <b>MobileNet</b>, <b>InceptionV3</b>, and <b>ResNet50</b> for facial-expression classification.
-            Applied class-imbalance handling, augmentation, and Grad-CAM visualization for explainability.
-          </p>
-          <p className="tags">
-            #CNN #TransferLearning #EnsembleLearning #ComputerVision #GradCAM #DeepLearning
-          </p>
-        </div>
+        <ProjectCard
+          title="Autism Spectrum Disorder Detection"
+          description={<>Ensemble of <b>VGG16</b>, <b>MobileNet</b>, <b>InceptionV3</b>, and <b>ResNet50</b> for facial-expression-based ASD classification. Class-imbalance handling and Grad-CAM visualization for clinical explainability.</>}
+          tags={["CNN", "Transfer Learning", "Ensemble", "Grad-CAM", "HealthcareAI"]}
+          metrics={[
+            { label: "Architectures", value: "4 CNNs" },
+            { label: "Explainability", value: "Grad-CAM" },
+          ]}
+        />
 
-        <div className="project">
-          <h2>COVID-19 Diagnosis from Chest X-Rays</h2>
-          <p>
-            Trained CNNs on lung-segmented CXR images with intensity normalization.
-            Achieved 93.7 % accuracy with AUC and F1 reporting; deployed batch inference pipeline with threshold tuning.
-          </p>
-          <p className="tags">
-            #CNN #MedicalImaging #ChestXRay #DeepLearning #AUC #DataPreprocessing
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>Intracranial Hemorrhage Detection on Head CT</h2>
-          <p>
-            Developed multi-type ICH classifier with windowing and artifact reduction.
-            Achieved ~87 % accuracy with macro F1; visualized Grad-CAM heatmaps for clinical review. Deployed to Heroku.
-          </p>
-          <p className="tags">
-            #CTScan #MedicalAI #DeepLearning #GradCAM #Classification #HealthcareAI
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>SHUSSH! · Context-Aware Android App</h2>
-          <p>
-            Implemented geofencing and orientation-based auto-silencing using <b>Flutter</b>.
-            Integrated <b>Firebase Auth</b> + <b>Firestore</b> for sync and analytics; used Provider for state management.
-          </p>
-          <p className="tags">
-            #Flutter #Firebase #Firestore #Geofencing #MobileApp #ContextAwareAI
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>Autonomous Delivery Drone – Embedded Navigation</h2>
-          <p>
-            Configured <b>Raspberry Pi</b> flight control with PID-tuned stabilization using GPS and IMU telemetry.
-            Implemented mission planning and failsafe loops for robust autonomous flight.
-          </p>
-          <p className="tags">
-            #EmbeddedSystems #PID #Navigation #DroneAI #IoT #Autonomy
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>WeatherBot · Serverless Conversational AI on AWS</h2>
-          <p>
-            Built a task-oriented chatbot with <b>Amazon Lex</b> and <b>Lambda</b> (Python) secured via IAM and API Gateway.
-            Integrated <b>Amplify</b> frontend with <b>Cognito</b> auth and <b>CloudWatch</b> logging.
-          </p>
-          <p className="tags">
-            #AWS #Lex #Lambda #Cognito #Amplify #Serverless #Chatbot #NLP
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>Tailor App · Vertical CRUD with SMS Ops</h2>
-          <p>
-            Delivered order tracking and billing with normalized Firestore schema and offline-first caching.
-            Automated <b>Twilio</b> SMS notifications via cloud functions with telemetry; added CSV export and search.
-          </p>
-          <p className="tags">
-            #Firestore #Twilio #CloudFunctions #CRUD #Firebase #OfflineFirst
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>3D Skeleton-Based Action Recognition</h2>
-          <p>
-            Processed UTD-MHAD skeleton streams and engineered kinematic features for ML baselines.
-            Evaluated <b>ST-GCN</b> for spatiotemporal dependencies and benchmarked accuracy vs feature models.
-          </p>
-          <p className="tags">
-            #ActionRecognition #SkeletonData #GraphNeuralNetwork #STGCN #MachineLearning
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>Surviving Airplane Disasters – Unsupervised Analysis</h2>
-          <p>
-            Engineered features from weather and route context; applied <b>PCA</b> and <b>K-Means</b> with silhouette 0.83.
-            Interpreted clusters using partial-dependence plots for risk pattern analysis.
-          </p>
-          <p className="tags">
-            #UnsupervisedLearning #PCA #KMeans #Clustering #FeatureEngineering #DataScience
-          </p>
-        </div>
-
-        <div className="project">
-          <h2>NIFTY50 Market Analysis – BI Dashboards</h2>
-          <p>
-            Built interactive <b>Tableau</b> dashboards for price/volume regimes with filters and sector aggregation.
-            Applied volatility bands and moving averages to highlight market regime shifts.
-          </p>
-          <p className="tags">
-            #DataVisualization #Tableau #Finance #BI #Analytics
-          </p>
-        </div>
+        <ProjectCard
+          title="COVID-19 Diagnosis from Chest X-Rays"
+          description={<>CNNs trained on lung-segmented CXR images with intensity normalization. Batch inference pipeline with threshold tuning for clinical deployment, reported with AUC and F1 scoring.</>}
+          tags={["CNN", "Medical Imaging", "CXR", "Deep Learning", "AUC"]}
+          metrics={[
+            { label: "Accuracy", value: "93.7%" },
+            { label: "Modality", value: "Chest X-Ray" },
+          ]}
+        />
 
       </div>
     </div>

@@ -1,48 +1,175 @@
-.contact_wrapper svg {
-  font-size: 1em;
-  vertical-align: middle;
-  margin-right: 5px;
-}
+/* ── Contact Section ── */
 
-.contact-form {
-  padding-top: 20px;
+.contact-section {
+  padding: 5% 10%;
 
-  button {
-    float: right;
-    background-color: white;
-    color: #050f0b;
-  }
-
-  button:hover {
-    background-color: #5000ca;
-    color: white;
-  }
-
-  fieldset {
-    background-color: white;
+  @media (max-width: 768px) {
+    padding: 4rem 5%;
   }
 }
 
-label {
-  font-size: 1.2rem;
-  font-family: 'DomaineDispNar-Medium', sans-serif;
+.contact-card {
+  position: relative;
+  overflow: hidden;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  border-radius: 2.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--clr-surface-mid) 0%,
+    var(--clr-surface-low) 100%
+  );
+  border: 1px solid rgba(73, 68, 85, 0.12);
+  text-align: center;
+
+  @media (max-width: 560px) {
+    padding: 3rem 1.75rem;
+    border-radius: 1.5rem;
+  }
 }
 
-.form-flex {
+/* Ambient background glows */
+.contact-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+.contact-glow-tr {
+  top: -80px;
+  right: -80px;
+  background: rgba(80, 0, 202, 0.12);
+}
+
+.contact-glow-bl {
+  bottom: -80px;
+  left: -80px;
+  background: rgba(137, 206, 255, 0.08);
+}
+
+/* Heading */
+.contact-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--clr-on-surface) !important;
+  margin: 0 0 0.85rem;
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-sub {
+  font-family: var(--font-label);
+  font-size: 0.95rem;
+  color: var(--clr-on-surface-variant) !important;
+  margin: 0 0 2.5rem;
+  line-height: 1.65;
+  position: relative;
+  z-index: 1;
+}
+
+/* Buttons row */
+.contact-actions {
   display: flex;
-  gap: 15px;
-  padding-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  position: relative;
+  z-index: 1;
 }
 
-.form-flex .MuiFormControl-root {
-  width: 100%;
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.875rem;
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  svg {
+    color: inherit !important;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 }
 
-form {
-  width: 100% !important;
+/* Primary: filled gradient */
+.primary-action {
+  background: linear-gradient(135deg, var(--clr-on-surface) 0%, #c8c8ce 100%);
+  color: var(--clr-surface-dim) !important;
+  box-shadow: 0 8px 24px rgba(226, 226, 232, 0.15);
+
+  svg { color: var(--clr-surface-dim) !important; }
+
+  &:hover {
+    box-shadow: 0 12px 32px rgba(226, 226, 232, 0.25);
+  }
 }
 
-.body-form {
-  width: 100% !important;
-  margin-bottom: 15px !important;
+/* Ghost: outlined */
+.ghost-action {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--clr-on-surface) !important;
+  border: 1px solid rgba(73, 68, 85, 0.35);
+
+  svg { color: var(--clr-on-surface) !important; }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(73, 68, 85, 0.6);
+  }
+}
+
+/* ── Light mode ── */
+.light-mode .contact-card {
+  background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.02) 100%);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+.light-mode .contact-heading {
+  color: #0d1116 !important;
+}
+
+.light-mode .contact-sub {
+  color: rgba(13, 17, 22, 0.65) !important;
+}
+
+.light-mode .primary-action {
+  background: linear-gradient(135deg, #0d1116 0%, #282828 100%);
+  color: #fff !important;
+  svg { color: #fff !important; }
+}
+
+.light-mode .ghost-action {
+  background: rgba(0,0,0,0.03);
+  color: #0d1116 !important;
+  border-color: rgba(0,0,0,0.15);
+  svg { color: #0d1116 !important; }
+
+  &:hover {
+    background: rgba(0,0,0,0.06);
+    border-color: rgba(0,0,0,0.25);
+  }
+}
+
+.light-mode .contact-glow-tr {
+  background: rgba(80, 0, 202, 0.07);
+}
+
+.light-mode .contact-glow-bl {
+  background: rgba(14, 165, 233, 0.06);
 }

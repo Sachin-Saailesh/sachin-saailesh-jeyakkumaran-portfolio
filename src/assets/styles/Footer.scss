@@ -1,15 +1,97 @@
-footer {
+/* ── Footer ── */
+
+.site-footer {
+  padding: 2.5rem 10%;
+  border-top: 1px solid rgba(73, 68, 85, 0.15);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    gap: 1rem;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.footer-wordmark {
+  font-family: var(--font-headline);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-on-surface-variant) !important;
+}
+
+.footer-tagline {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--clr-outline-variant) !important;
+}
+
+.footer-links {
+  display: flex;
+  gap: 0.75rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(73, 68, 85, 0.2);
+    color: var(--clr-on-surface-variant) !important;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 
     svg {
-        width: 1.1em !important;
-        height: 1.1em !important;
-        margin-right: 10px;
+      font-size: 1rem !important;
+      color: inherit !important;
     }
 
-    p {
-        font-size: 0.8em;
+    &:hover {
+      background: rgba(80, 0, 202, 0.2);
+      color: var(--clr-primary) !important;
+      transform: translateY(-2px);
     }
+  }
+}
+
+.footer-copy {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  color: var(--clr-outline-variant) !important;
+  margin: 0;
+}
+
+/* Light mode */
+.light-mode .site-footer {
+  border-top-color: rgba(0, 0, 0, 0.08);
+
+  .footer-wordmark { color: rgba(13,17,22,0.55) !important; }
+  .footer-tagline  { color: rgba(13,17,22,0.4) !important; }
+  .footer-copy     { color: rgba(13,17,22,0.4) !important; }
+
+  .footer-links a {
+    background: rgba(0,0,0,0.06);
+    color: rgba(13,17,22,0.55) !important;
+
+    &:hover {
+      background: rgba(80,0,202,0.1);
+      color: var(--clr-primary-container) !important;
+    }
+  }
 }

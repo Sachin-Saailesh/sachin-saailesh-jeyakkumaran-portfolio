@@ -25,7 +25,7 @@ function Main() {
           </div>
 
           <h1 className="title">Sachin Saailesh Jeyakkumaran</h1>
-          <p>AI / ML Engineer</p>
+          <p>AI Engineer</p>
 
           <div className="mobile_social_icons">
             <a href="https://github.com/Sachin-Saailesh" target="_blank" rel="noreferrer"><GitHubIcon /></a>

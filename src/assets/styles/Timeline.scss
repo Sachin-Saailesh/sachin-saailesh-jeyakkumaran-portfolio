@@ -1,38 +1,185 @@
+/* ── Timeline Section ── */
+
+.timeline-wrapper {
+  padding-top: 3rem;
+}
+
+.timeline-header {
+  margin-bottom: 2.5rem;
+}
+
+.timeline-heading {
+  font-family: var(--font-headline);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--clr-on-surface);
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* ── Timeline line ── */
+.vertical-timeline::before {
+  background: rgba(73, 68, 85, 0.3) !important;
+  width: 2px !important;
+}
+
+/* ── Date labels ── */
 .vertical-timeline span {
-    color: white;
-    font-family: 'Courier Prime', monospace;
+  font-family: var(--font-label) !important;
+  font-size: 0.82rem !important;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--clr-on-surface-variant) !important;
 }
 
-.vertical-timeline p {
-    color: rgb(39, 40, 34);
+/* ── All card text resets (override lib's white-bg defaults) ── */
+.vertical-timeline-element p,
+.vertical-timeline-element h3,
+.vertical-timeline-element h4,
+.vertical-timeline-element span,
+.vertical-timeline-element li {
+  color: var(--clr-on-surface) !important;
 }
 
-.vertical-timeline-element p {
-    color: rgb(39, 40, 34);
+.vertical-timeline-element-date {
+  color: var(--clr-on-surface-variant) !important;
 }
 
-.vertical-timeline-element h3 {
-    color: rgb(39, 40, 34);
+/* ── Card hover ── */
+.vertical-timeline-element-content {
+  border-radius: 1rem !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease !important;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(80, 0, 202, 0.12) !important;
+    border-color: rgba(80, 0, 202, 0.3) !important;
+  }
 }
 
-.vertical-timeline-element h4 {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element span {
-    color: rgb(39, 40, 34);
-}
-
-.vertical-timeline-element .vertical-timeline-element-date {
-    color: white;
-}
-
+/* ── Icon (FontAwesome SVG) ── */
 .svg-inline--fa {
-    color: white;
+  color: white !important;
 }
 
-@media screen and (max-width: 1170px) {
-    .vertical-timeline-element .vertical-timeline-element-date {
-        color: rgb(39, 40, 34);
+/* ── Badge ── */
+.tl-badge {
+  display: inline-block;
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+
+  &.tl-badge-work {
+    background: rgba(80, 0, 202, 0.18);
+    color: var(--clr-primary) !important;
+  }
+
+  &.tl-badge-ta {
+    background: rgba(73, 68, 85, 0.35);
+    color: var(--clr-on-surface-variant) !important;
+  }
+
+  &.tl-badge-edu {
+    background: rgba(14, 165, 233, 0.15);
+    color: #7dd3fc !important;
+  }
+}
+
+/* ── Role / Company ── */
+.tl-role {
+  font-family: var(--font-headline) !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+  color: var(--clr-on-surface) !important;
+  margin: 0 0 0.2rem !important;
+}
+
+.tl-company {
+  font-family: var(--font-label) !important;
+  font-size: 0.85rem !important;
+  font-weight: 400 !important;
+  color: var(--clr-on-surface-variant) !important;
+  margin: 0 0 1rem !important;
+}
+
+/* ── Bullet list ── */
+.tl-bullets {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+
+  li {
+    font-size: 0.88rem !important;
+    line-height: 1.65 !important;
+    color: var(--clr-on-surface-variant) !important;
+
+    strong {
+      color: var(--clr-on-surface) !important;
+      font-weight: 600;
     }
+  }
+}
+
+/* ── Body text (education) ── */
+.tl-body {
+  font-size: 0.88rem !important;
+  line-height: 1.65 !important;
+  color: var(--clr-on-surface-variant) !important;
+  margin: 0 0 0.5rem !important;
+
+  strong {
+    color: var(--clr-on-surface) !important;
+    font-weight: 600;
+  }
+}
+
+/* ── Responsive: date text inside card on narrow screens ── */
+@media screen and (max-width: 1170px) {
+  .vertical-timeline-element-date {
+    color: var(--clr-on-surface-variant) !important;
+    padding-top: 0.5rem !important;
+  }
+}
+
+/* ── Light mode ── */
+.light-mode .timeline-heading {
+  color: #0d1116;
+}
+
+.light-mode .vertical-timeline::before {
+  background: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-mode .vertical-timeline-element-content {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+
+  &:hover {
+    box-shadow: 0 16px 40px rgba(80, 0, 202, 0.08) !important;
+    border-color: rgba(80, 0, 202, 0.2) !important;
+  }
+}
+
+.light-mode .vertical-timeline-element-content-arrow {
+  border-right-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+.light-mode .tl-role    { color: #0d1116 !important; }
+.light-mode .tl-company { color: rgba(13,17,22,0.6) !important; }
+.light-mode .tl-bullets li { color: rgba(13,17,22,0.7) !important; }
+.light-mode .tl-bullets li strong { color: #0d1116 !important; }
+.light-mode .tl-body    { color: rgba(13,17,22,0.7) !important; }
+.light-mode .tl-body strong { color: #0d1116 !important; }
+.light-mode .vertical-timeline span,
+.light-mode .vertical-timeline-element-date {
+  color: rgba(13,17,22,0.55) !important;
 }
