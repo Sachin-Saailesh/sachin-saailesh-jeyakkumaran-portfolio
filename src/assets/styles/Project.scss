@@ -80,7 +80,7 @@
       inset 0 0 20px rgba(206, 189, 255, 0.025);
   }
 
-  h2 {
+  h3 {
     font-family: var(--font-headline);
     font-size: 1.05rem;
     font-weight: 700;
@@ -90,7 +90,7 @@
     transition: color 0.2s ease;
   }
 
-  &:hover h2 {
+  &:hover h3 {
     color: var(--clr-primary) !important;
   }
 }
@@ -224,8 +224,8 @@
       box-shadow: 0 20px 44px rgba(80,0,202,0.07);
     }
 
-    h2 { color: #0d1116 !important; }
-    &:hover h2 { color: var(--clr-primary-container) !important; }
+    h3 { color: #0d1116 !important; }
+    &:hover h3 { color: var(--clr-primary-container) !important; }
   }
 
   .project-description { color: rgba(13,17,22,0.7) !important; b { color: #0d1116 !important; } }

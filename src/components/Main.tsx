@@ -15,7 +15,7 @@ function Main() {
         </span>
 
         <div className="image-wrapper">
-          <img src={avatar} alt="Avatar" />
+          <img src={avatar} alt="Sachin Saailesh Jeyakkumaran" />
         </div>
 
         <div className="content">

@@ -4,7 +4,7 @@
 }
 
 .light-mode .about-section {
-    background-image: url("../images/bg-light11.png");
+    background-image: url("../images/bg-light11.webp");
 }
 
 
@@ -59,7 +59,7 @@ body {
     padding-block: clamp(96px, 14vh, 180px); // padding-block: clamp(64px, 12vh, 140px);
     min-height: var(--hero-min-desktop); // min-height: clamp(520px, 70vh, 780px);
 
-    background-image: url("../images/bg-dark.png");
+    background-image: url("../images/bg-dark.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -283,7 +283,7 @@ body {
         pointer-events: none;
         /* keep UI clickable */
         /* draw the same art as a layer we can transform */
-        background-image: url("../images/bg-dark.png");
+        background-image: url("../images/bg-dark.webp");
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -299,7 +299,7 @@ body {
     }
 
     .light-mode .about-section::before {
-        background-image: url("../images/bg-light.png");
+        background-image: url("../images/bg-light.webp");
     }
 
 

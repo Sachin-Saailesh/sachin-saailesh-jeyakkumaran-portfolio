@@ -17,7 +17,7 @@ interface ProjectCardProps {
 function ProjectCard({ title, description, tags, metrics, github, demo }: ProjectCardProps) {
   return (
     <div className="project-card">
-      <h2>{title}</h2>
+      <h3>{title}</h3>
       <p className="project-description">{description}</p>
 
       {/* Tech tags */}
@@ -58,7 +58,7 @@ function Project() {
       <div className="projects-header">
         <div>
           <span className="section-eyebrow">Portfolio</span>
-          <h1 className="projects-heading">Technical Projects</h1>
+          <h2 className="projects-heading">Technical Projects</h2>
         </div>
         <p className="projects-subtext">
           Voice agents, multi-agent systems, and AI/ML platforms built for production, research, and edge deployment.
